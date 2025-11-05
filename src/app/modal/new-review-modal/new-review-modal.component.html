@@ -1,0 +1,51 @@
+<div (click)="handleCancel()" class="modal-overlay">
+  
+  <div (click)="$event.stopPropagation()" class="modal-content">
+    
+    <div class="modal-header">
+      <h2>Nova Resenha</h2>
+    </div>
+
+    <form (ngSubmit)="handleSubmit()" class="modal-form"> <div class="form-field">
+        <label for="workTitle">Título da Obra</label>
+        <input
+          id="workTitle"
+          [(ngModel)]="formData.titulo" name="workTitle"
+          placeholder="Digite o título da obra"
+          required
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="workAuthor">Autor da Obra</label>
+        <input
+          id="workAuthor"
+          [(ngModel)]="formData.autorObra"
+          name="workAuthor"
+          placeholder="Digite o nome do autor da obra"
+          required
+        />
+      </div>
+
+      <div class="form-field">
+        <label for="content">Conteúdo da Resenha</label>
+        <textarea
+          id="content"
+          [(ngModel)]="formData.conteudo" name="content"
+          placeholder="Escreva sua resenha aqui..."
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" (click)="handleCancel()" class="btn-secondary">
+          Cancelar
+        </button>
+        <button type="submit" class="btn-primary">
+          Salvar Resenha
+        </button>
+      </div>
+  
+    </form>
+  </div>
+</div>

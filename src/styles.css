@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#1e1b4b] text-gray-200;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-border;
+  }
+  .glass-input {
+    @apply bg-white/10 border-border rounded-lg;
+  }
+}

@@ -1,0 +1,138 @@
+/* :host é um seletor do Angular que garante que 
+   estes estilos SÓ se apliquem a este componente.
+*/
+
+/* 1. O Fundo Escuro (Overlay) */
+:host .modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+}
+
+/* 2. O Card de "Vidro" (Conteúdo do Modal) */
+:host .modal-content {
+  width: 100%;
+  max-width: 42rem; /* max-w-2xl */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 1rem; /* rounded-2xl */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  
+  /* Efeito de Vidro (glass-card) */
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:host .modal-header {
+  margin-bottom: 1rem;
+}
+
+:host .modal-header h2 {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 500; /* font-medium */
+}
+
+/* 3. Layout do Formulário */
+:host .modal-form {
+  padding-top: 1rem;
+}
+
+:host .form-field {
+  margin-bottom: 1.5rem; /* space-y-6 */
+}
+
+:host .form-field label {
+  display: block;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 500; /* font-medium */
+  margin-bottom: 0.5rem; /* space-y-2 */
+  
+  /* Cor do Título/Label (como você pediu) */
+  color: #a1a1aa; /* cinza/zinc-400 */
+}
+
+/* 4. Estilo dos Campos de Input e Textarea */
+:host input,
+:host textarea {
+  width: 100%;
+  transition: all 0.2s ease;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  
+  /* Efeito de Vidro (glass-input) */
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem; /* rounded-lg */
+  color: #f1f5f9; /* Texto digitado (cinza claro) */
+}
+
+:host input {
+  height: 3rem; /* h-12 */
+}
+
+:host textarea {
+  min-height: 150px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  resize: none;
+}
+
+/* Cor do placeholder (mais escuro) */
+:host input::placeholder,
+:host textarea::placeholder {
+  color: #a1a1aa; /* cinza/zinc-400 */
+  opacity: 1;
+}
+
+/* Efeito de Focus (borda roxa) */
+:host input:focus,
+:host textarea:focus {
+  outline: none;
+  border-color: #a855f7; /* primary */
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.5); /* ring-2 ring-primary/50 */
+}
+
+/* 5. Ações (Botões) */
+:host .form-actions {
+  display: flex;
+  gap: 0.75rem; /* gap-3 */
+  padding-top: 1rem; /* pt-4 */
+}
+
+:host .form-actions button {
+  flex: 1;
+  height: 3rem; /* h-12 */
+  border-radius: 0.5rem; /* rounded-lg */
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+/* Botão Secundário (Cancelar) */
+:host .btn-secondary {
+  background-color: #334155; /* secondary */
+  color: #f8fafc;
+}
+
+:host .btn-secondary:hover {
+  background-color: #475569; /* secondary/70 */
+}
+
+/* Botão Primário (Salvar) */
+:host .btn-primary {
+  color: white;
+  background-image: linear-gradient(to right, #a855f7, #9333ea); /* from-primary to-accent */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+:host .btn-primary:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.1);
+}

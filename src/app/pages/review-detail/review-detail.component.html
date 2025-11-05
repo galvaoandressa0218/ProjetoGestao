@@ -1,0 +1,55 @@
+<div class="min-h-screen p-4 md:p-8">
+  <div class="max-w-4xl mx-auto">
+    
+    <ng-container *ngIf="postagem; else notFound">
+      
+      <button
+        (click)="navigateHome()"
+        class="mb-6 text-muted-foreground hover:text-foreground transition-colors duration-200 flex items-center"
+      >
+        <span class="mr-2 h-4 w-4">&larr;</span>
+        Voltar para Resenhas
+      </button>
+
+      <div class="glass-card rounded-[16px] p-8 md:p-10 shadow-2xl">
+        <div class="space-y-6">
+          <div class="border-b border-border/50 pb-6">
+            <h1 class="mb-3">{{ postagem.titulo }}</h1>
+            </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+            <div class="space-y-1">
+              <p class="text-sm text-muted-foreground">Autor</p>
+              <p>{{ postagem.criadorNome }}</p>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm text-muted-foreground">Data da Publicação</p>
+              <p class="text-primary">{{ postagem.dataPublicacao | date:'dd/MM/yyyy' }}</p>
+            </div>
+          </div>
+
+          <div class="border-t border-border/50 pt-6">
+            <h3 class="mb-4">Resenha</h3>
+            <p class="leading-relaxed text-foreground/90 whitespace-pre-wrap">
+              {{ postagem.conteudo }}
+            </p>
+          </div>
+
+          </div>
+      </div>
+
+    </ng-container>
+
+    <ng-template #notFound>
+      <div class="flex items-center justify-center">
+        <div class="glass-card rounded-[16px] p-8 max-w-md">
+          <h2 class="mb-4">Resenha Não Encontrada</h2>
+          <button (click)="navigateHome()" class="w-full h-12 rounded-lg bg-primary">
+            Retornar à Home
+          </button>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>

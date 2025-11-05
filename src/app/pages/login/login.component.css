@@ -1,0 +1,172 @@
+/* Base de variáveis do seu CSS */
+:root {
+  --font-size: 16px;
+  --background: #1A1235;
+  --foreground: #ffffff;
+  --card: rgba(43, 30, 94, 0.6);
+  --card-foreground: #ffffff;
+  --popover: rgba(43, 30, 94, 0.95);
+  --popover-foreground: #ffffff;
+  --primary: #9b87f5;
+  --primary-foreground: #ffffff;
+  --secondary: #4a4165;
+  --secondary-foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.1);
+  --muted-foreground: #c5b8e8;
+  --accent: #7c5ced;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(155, 135, 245, 0.2);
+  --input: rgba(255, 255, 255, 0.1);
+  --input-background: rgba(255, 255, 255, 0.05);
+  --switch-background: #4a4165;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #9b87f5;
+  --chart-1: #9b87f5;
+  --chart-2: #7c5ced;
+  --chart-3: #c5b8e8;
+  --chart-4: #4a4165;
+  --chart-5: #2b1e5e;
+  --radius: 0.75rem;
+  --sidebar: #1A1235;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #9b87f5;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(43, 30, 94, 0.6);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(155, 135, 245, 0.2);
+  --sidebar-ring: #9b87f5;
+}
+
+/* Classes Glassmorphism da sua base */
+.glass-card {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-input {
+  background: var(--input-background);
+  border: 1px solid rgba(155, 135, 245, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+/* Container principal (usando o gradiente da sua base) */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1A1235 0%, #2B1E5E 100%);
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Estilos do Componente de Login */
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 30px;
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.logo {
+  color: var(--foreground);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: var(--muted-foreground);
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: var(--foreground);
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: var(--font-weight-medium);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: calc(var(--radius) - 0.25rem);
+  color: var(--foreground);
+  box-sizing: border-box;
+  font-size: var(--font-size);
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: var(--muted-foreground);
+  opacity: 0.6;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: calc(var(--radius) - 0.25rem);
+  font-size: var(--font-size);
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+  font-weight: var(--font-weight-medium);
+}
+
+/* "Sign In" (Botão Roxo Claro) */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* "Cancel" (Botão Roxo Escuro) */
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.btn-secondary:hover {
+  opacity: 0.9;
+}
+
+.create-account-link {
+  display: block;
+  margin-top: 20px;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.create-account-link:hover {
+  text-decoration: underline;
+  color: var(--foreground);
+}

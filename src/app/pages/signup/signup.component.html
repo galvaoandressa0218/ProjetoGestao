@@ -1,0 +1,80 @@
+<div class="min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-md">
+    <div class="glass-card rounded-[16px] p-8 shadow-2xl">
+      <h1 class="text-center mb-2">Criar Conta</h1>
+      <p class="text-center text-muted-foreground mb-8">Crie sua conta Techly</p>
+      
+      <form (ngSubmit)="handleCreateAccount()" class="space-y-6">
+        
+        <div class="space-y-2">
+          <label for="nome" class="text-sm font-medium text-gray-300">Nome</label>
+          <input
+            id="nome"
+            type="text"
+            [(ngModel)]="formData.nome"
+            name="nome"
+            class="glass-input h-12 w-full px-4 transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/50 placeholder:text-gray-400"
+            placeholder="Seu nome completo"
+            required
+          />
+        </div>
+
+        <div class="space-y-2">
+          <label for="email" class="text-sm font-medium text-gray-300">Email</label>
+          <input
+            id="email"
+            type="email"
+            [(ngModel)]="formData.email"
+            name="email"
+            class="glass-input h-12 w-full px-4 transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/50 placeholder:text-gray-400"
+            placeholder="seu@email.com"
+            required
+          />
+        </div>
+
+        <div class="space-y-2">
+          <label for="password" class="text-sm font-medium text-gray-300">Senha</label>
+          <input
+            id="password"
+            type="password"
+            [(ngModel)]="formData.senha"
+            name="password"
+            class="glass-input h-12 w-full px-4 transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/50 placeholder:text-gray-400"
+            placeholder="••••••••"
+            required
+          />
+        </div>
+
+        <div *ngIf="errorMessage" class="pt-2 text-center text-destructive">
+          <p>{{ errorMessage }}</p>
+        </div>
+
+        <div class="flex gap-3 pt-2">
+          <button
+            type="submit"
+            class="flex-1 h-12 rounded-lg bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            Criar Conta
+          </button>
+          <button
+            type="button"
+            (click)="navigateTo('login')"
+            class="flex-1 h-12 rounded-lg bg-secondary hover:bg-secondary/70 transition-all duration-300"
+          >
+            Cancelar
+          </button>
+        </div>
+
+        <div class="text-center pt-4">
+          <button
+            type="button"
+            (click)="navigateTo('login')"
+            class="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+          >
+            Já tem uma conta? <span class="text-primary underline underline-offset-4">Entrar</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
