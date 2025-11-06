@@ -6,21 +6,51 @@
           <h1 class="mb-2">Techly</h1>
           <p class="text-muted-foreground">Compartilhe e ganhe conhecimento sobre tecnologia.</p>
         </div>
-        <button
-          (click)="showNewReview = true"
-          class="h-12 px-6 rounded-lg bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 shadow-lg hover:shadow-xl transition-all duration-300"
-        >
-          <span class="mr-2 h-5 w-5">+</span>
-          Nova Resenha
-        </button>
+        
+        <div class="flex gap-3">
+          <button
+            (click)="showSearchUserModal = true"
+            title="Buscar Usuário"
+            class="h-12 w-12 flex items-center justify-center rounded-lg bg-secondary hover:bg-secondary/70 transition-all duration-300"
+          >
+            <span class="text-xl">🔎</span>
+          </button>
+          
+          <button
+            (click)="showNewReview = true"
+            class="h-12 px-6 rounded-lg bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <span class="mr-2 h-5 w-5">+</span>
+            Nova Resenha
+          </button>
+        </div>
       </div>
-
+      
       <div *ngIf="showError" class="glass-card rounded-xl p-4 border border-destructive/50 bg-destructive/10">
-        <p class="text-destructive">Não foi possível 
- conectar ao serviço. Por favor, recarregue a página.</p>
+        <p class="text-destructive">Não foi possível conectar ao serviço. Por favor, recarregue a página.</p>
       </div>
     </div>
 
+    <div class="mb-8 md:mb-12 p-6 glass-card rounded-[16px] border border-border/50">
+      <h3 class="mb-4">Buscar Resenhas</h3>
+      <form (ngSubmit)="handleSearchPost()" class="flex gap-3">
+        <input
+          type="text"
+          [(ngModel)]="buscaInputPost"
+          name="buscaInputPost"
+          placeholder="Buscar por título ou conteúdo..."
+          class="glass-input h-12 flex-1 px-4 transition-all duration-200 focus:border-primary focus:ring-2 focus:ring-primary/50 placeholder:text-gray-400"
+        />
+        <button type="submit" class="h-12 px-6 rounded-lg bg-secondary hover:bg-secondary/70 transition-all duration-300">
+          Buscar
+        </button>
+        <button type="button" (click)="clearSearchPost()" class="h-12 px-6 rounded-lg text-muted-foreground hover:text-foreground transition-colors duration-200">
+          Limpar
+        </button>
+      </form>
+    </div>
+
+    <h2 class="text-2xl font-semibold mb-6">Todas as Resenhas</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div 
         *ngFor="let postagem of (postagens$ | async)"
@@ -30,12 +60,10 @@
         <div class="space-y-4">
           <div>
             <h3 class="mb-1">{{ postagem.titulo }}</h3>
-            </div>
-          
+          </div>
           <p class="text-sm text-foreground/80 line-clamp-3 min-h-[60px]">
             {{ postagem.conteudo }}
           </p>
-
           <div class="space-y-1">
             <p class="text-sm">
               <span class="text-muted-foreground">Autor:</span>
@@ -46,22 +74,15 @@
               <span class="text-primary"> {{ postagem.dataPublicacao | date:'dd/MM/yyyy' }}</span>
             </p>
           </div>
-
-          </div>
+        </div>
       </div>
     </div>
 
     <div class="mt-12 flex justify-center gap-4">
-      <button
-        (click)="handleLogout()"
-        class="text-muted-foreground hover:text-foreground transition-colors duration-200"
-      >
+      <button (click)="handleLogout()" class="text-muted-foreground hover:text-foreground transition-colors duration-200">
         Sair (Demo)
       </button>
-      <button
-        (click)="showError = !showError"
-        class="text-muted-foreground hover:text-destructive transition-colors duration-200 text-sm"
-      >
+      <button (click)="showError = !showError" class="text-muted-foreground hover:text-destructive transition-colors duration-200 text-sm">
         Alternar Erro (Demo)
       </button>
     </div>
@@ -74,3 +95,9 @@
   (closeModal)="showNewReview = false"
 >
 </app-new-review-modal>
+
+<app-search-user-modal
+  *ngIf="showSearchUserModal"
+  (closeModal)="showSearchUserModal = false"
+>
+</app-search-user-modal>

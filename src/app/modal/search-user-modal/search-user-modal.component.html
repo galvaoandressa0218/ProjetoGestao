@@ -1,0 +1,53 @@
+<div (click)="handleCancel()" class="modal-overlay">
+  
+  <div (click)="$event.stopPropagation()" class="modal-content">
+    
+    <div class="modal-header">
+      <h2>Buscar Usuário</h2>
+    </div>
+
+    <form (ngSubmit)="handleSearchUser()" class="modal-form">
+      
+      <div class="form-field">
+        <label for="userName">Nome do Usuário</label>
+        <input
+          id="userName"
+          [(ngModel)]="buscaInputUsuario"
+          name="userName"
+          placeholder="Digite o nome (mín. 3 letras)..."
+          class="glass-input h-12 w-full px-4"
+          required
+        />
+      </div>
+
+      <div class="form-actions">
+        <button type="button" (click)="handleCancel()" class="btn-secondary">
+          Fechar
+        </button>
+        <button type="submit" class="btn-primary">
+          Buscar
+        </button>
+      </div>
+  
+    </form>
+
+    <div class="modal-results">
+      <div *ngIf="usuariosEncontrados$ | async as usuarios">
+        <div *ngIf="usuarios.length > 0; else noUsers">
+          
+          <div *ngFor="let usuario of usuarios" class="result-item">
+            <p class="font-semibold">{{ usuario.nome }}</p>
+            <p class="text-sm text-muted-foreground">{{ usuario.email }}</p>
+          </div>
+
+        </div>
+        <ng-template #noUsers>
+          <p *ngIf="buscaInputUsuario.length >= 3" class="text-muted-foreground text-center p-4">
+            Nenhum usuário encontrado.
+          </p>
+        </ng-template>
+      </div>
+    </div>
+
+  </div>
+</div>

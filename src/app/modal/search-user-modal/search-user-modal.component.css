@@ -1,0 +1,18 @@
+/* Importa o CSS base do outro modal para manter consistência */
+@import '../new-review-modal/new-review-modal.component.css';
+
+/* Estilos para a lista de resultados */
+.modal-results {
+  margin-top: 1.5rem; /* 24px */
+  max-height: 300px;
+  overflow-y: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem; /* 16px */
+}
+
+.result-item {
+  padding: 0.75rem 1rem; /* 12px 16px */
+  margin-bottom: 0.5rem; /* 8px */
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
